@@ -46,7 +46,12 @@ if (isguestuser()) {
     throw new moodle_exception('noguest');
 }
 
+echo $OUTPUT->header();
+echo $OUTPUT->heading($strheading, 2);
+
 $searchform = new \local_dbapis\form\search_form();
+
+$searchform->display();
 
 if ($data = $searchform->get_data()) {
 
@@ -54,24 +59,27 @@ if ($data = $searchform->get_data()) {
     // TODO: Ensure user input is safe to use.
     $searchterm = required_param('searchterm', PARAM_RAW);
 
-    // We are just displaying the form data here.
-    // TODO: Query the database for the search term.
-    echo $OUTPUT->header();
+    // Search query.
+    $sql = "SELECT * FROM {local_dbapis} WHERE message LIKE '%$searchterm%'";
+
+    $results = $DB->get_records_sql($sql);
 
     echo html_writer::start_tag('div', ['class' => 'border p-3 my-3']);
-    echo $searchterm;
+
+    // Display the search results.
+    foreach ($results as $record) {
+        // Get the record for the user.
+        $user = $DB->get_record('user', ['id' => $record->userid]);
+
+        echo html_writer::start_tag('p', ['class' => '']);
+        echo $record->id . ', ' . $record->message . ', ' . $user->firstname . ' ' . $user->lastname;
+        echo html_writer::end_tag('p');
+    }
+
     echo html_writer::end_tag('div');
 
     echo html_writer::link($PAGE->url, get_string('continue'), ['class' => 'btn btn-link']);
 
-    echo $OUTPUT->footer();
-
-    exit;
 }
-
-echo $OUTPUT->header();
-echo $OUTPUT->heading($strheading, 2);
-
-$searchform->display();
 
 echo $OUTPUT->footer();
