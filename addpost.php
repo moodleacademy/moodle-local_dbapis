@@ -28,8 +28,17 @@ $context = context_system::instance();
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/dbapis/addpost.php'));
 $PAGE->set_pagelayout('standard');
-$PAGE->set_title($SITE->fullname);
-$PAGE->set_heading(get_string('pluginname', 'local_dbapis'));
+
+$strtitle = get_string('pluginname', 'local_dbapis');
+$strheading = get_string('addpost', 'local_dbapis');
+
+$PAGE->set_title($strtitle);
+$PAGE->set_heading($strtitle);
+
+// Add breadcrumbs.
+$navbar = $PAGE->navbar;
+$navbar->add($strtitle, new moodle_url('/local/dbapis/'));
+$navbar->add($strheading)->make_active();
 
 require_login();
 
@@ -61,6 +70,7 @@ if ($data = $messageform->get_data()) {
 }
 
 echo $OUTPUT->header();
+echo $OUTPUT->heading($strheading, 2);
 
 $messageform->display();
 
