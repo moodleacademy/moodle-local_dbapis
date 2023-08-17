@@ -39,4 +39,20 @@ if (isguestuser()) {
 
 echo $OUTPUT->header();
 
+echo html_writer::start_tag('div', array('class' => 'p-3 my-3'));
+
+echo html_writer::link(
+    new moodle_url('/local/dbapis/addpost.php'),
+    get_string('addpost', 'local_dbapis'),
+    ['class' => 'btn btn-link d-block text-left']
+);
+
+echo html_writer::link(
+    new moodle_url('/local/dbapis/search.php'),
+   get_string('searchposts', 'local_dbapis'),
+    ['class' => 'btn btn-link d-block text-left']
+);
+
+echo html_writer::end_tag('div');
+
 echo $OUTPUT->footer();
