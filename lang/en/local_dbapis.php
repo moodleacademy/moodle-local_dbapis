@@ -30,3 +30,4 @@ $string['yourmessage'] = 'Your message';
 $string['addpost'] = 'Add message';
 $string['searchposts'] = 'Search messages';
 $string['searchterm'] = 'Search term';
+$string['postdeleted'] = 'Message deleted successfully.';
