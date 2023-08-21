@@ -23,3 +23,14 @@
  */
 
 require_once('../../config.php');
+
+$id  = required_param('id', PARAM_INT); // Message id.
+$returnurl = required_param('returnurl', PARAM_TEXT);
+
+require_login();
+
+require_sesskey();
+
+$DB->delete_records('local_dbapis', ['id' => $id]);
+
+redirect($returnurl, get_string('postdeleted', 'local_dbapis'));
