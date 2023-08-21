@@ -29,6 +29,10 @@ $returnurl = required_param('returnurl', PARAM_TEXT);
 
 require_login();
 
+$context = context_system::instance();
+
+require_capability('local/dbapis:deleteanymessage', $context);
+
 require_sesskey();
 
 $DB->delete_records('local_dbapis', ['id' => $id]);

@@ -26,6 +26,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['addpost'] = 'Add message';
+$string['dbapis:deleteanymessage'] = 'Delete any message';
+$string['disclaimer'] = 'This is a sample plugin used for educational purposes only. It is NOT intended for use in production environments.';
 $string['pluginname'] = 'Database API examples';
 $string['postdeleted'] = 'Message deleted successfully.';
 $string['searchposts'] = 'Search messages';
