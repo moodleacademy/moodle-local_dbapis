@@ -27,6 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['addpost'] = 'Add message';
 $string['pluginname'] = 'Database API examples';
+$string['postdeleted'] = 'Message deleted successfully.';
 $string['searchposts'] = 'Search messages';
 $string['searchterm'] = 'Search term';
 $string['yourmessage'] = 'Your message';
