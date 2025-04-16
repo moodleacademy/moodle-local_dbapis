@@ -28,7 +28,7 @@ $context = context_system::instance();
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/dbapis/index.php'));
 $PAGE->set_pagelayout('standard');
-$PAGE->set_title($SITE->fullname);
+$PAGE->set_title(get_string('pluginname', 'local_dbapis'));
 $PAGE->set_heading(get_string('pluginname', 'local_dbapis'));
 
 require_login();
@@ -39,20 +39,6 @@ if (isguestuser()) {
 
 echo $OUTPUT->header();
 
-echo html_writer::start_tag('div', array('class' => 'p-3 my-3'));
-
-echo html_writer::link(
-    new moodle_url('/local/dbapis/addpost.php'),
-    get_string('addpost', 'local_dbapis'),
-    ['class' => 'btn btn-link d-block text-left']
-);
-
-echo html_writer::link(
-    new moodle_url('/local/dbapis/search.php'),
-   get_string('searchposts', 'local_dbapis'),
-    ['class' => 'btn btn-link d-block text-left']
-);
-
-echo html_writer::end_tag('div');
+echo $OUTPUT->render_from_template('local_dbapis/index_page', []);
 
 echo $OUTPUT->footer();
