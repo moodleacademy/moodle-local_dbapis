@@ -65,31 +65,26 @@ if ($data = $searchform->get_data()) {
     $params = ['searchterm' => '%' . $searchterm . '%'];
     $rs = $DB->get_recordset_sql($sql, $params);
 
-    echo html_writer::start_tag('div', ['class' => 'border p-3 my-3']);
-
-    // Display the search results.
+    $messages = [];
     foreach ($rs as $record) {
-        echo html_writer::start_tag('p', ['class' => '']);
 
         if (has_capability('local/dbapis:deleteanymessage', $context)) {
-            echo $OUTPUT->single_button(
+            $record->candelete = true;
+            $record->deleteurl = $OUTPUT->single_button(
                 new moodle_url('/local/dbapis/deletepost.php', ['id' => $record->id, 'returnurl' => $PAGE->url]),
                 get_string('delete')
             );
         }
 
-        echo $record->id . ', ' . $record->message . ', ' . $record->firstname . ' ' . $record->lastname;
-
-        echo html_writer::end_tag('p');
+        $messages[] = $record;
     }
 
     $rs->close();
 
-    echo html_writer::end_tag('div');
-
-    echo html_writer::link($PAGE->url, get_string('continue'), ['class' => 'btn btn-link']);
-
+    $templatedata = ['messages' => $messages, 'continueurl' => $PAGE->url];
+    echo $OUTPUT->render_from_template('local_dbapis/messages', $templatedata);
 }
 
-echo html_writer::tag('p', get_string('disclaimer', 'local_dbapis'), ['class' => 'alert alert-info mt-5']);
+echo $OUTPUT->render_from_template('local_dbapis/disclaimer', []);
+
 echo $OUTPUT->footer();

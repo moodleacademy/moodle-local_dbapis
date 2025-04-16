@@ -69,5 +69,6 @@ echo $OUTPUT->heading($strheading, 2);
 
 $messageform->display();
 
-echo html_writer::tag('p', get_string('disclaimer', 'local_dbapis'), ['class' => 'alert alert-info mt-5']);
+echo $OUTPUT->render_from_template('local_dbapis/disclaimer', []);
+
 echo $OUTPUT->footer();
