@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Database API examples';
-$string['yourmessage'] = 'Your message';
 $string['addpost'] = 'Add message';
+$string['pluginname'] = 'Database API examples';
 $string['searchposts'] = 'Search messages';
 $string['searchterm'] = 'Search term';
+$string['yourmessage'] = 'Your message';
