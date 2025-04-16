@@ -15,6 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ *  This file defines the message form.
+ *
+ * @package    local_dbapis
  * @copyright  2023 Your name <your@email>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,6 +28,13 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/formslib.php');
 
+/**
+ *  Class for the message form.
+ *
+ * @package    local_dbapis
+ * @copyright  2023 Your name <your@email>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class message_form extends \moodleform {
     /**
      * Define the form.

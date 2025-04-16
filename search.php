@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Add post.
+ * Search.
  *
  * @package    local_dbapis
  * @copyright  2023 Your Name <you@example.com>
@@ -56,7 +56,7 @@ $searchform->display();
 if ($data = $searchform->get_data()) {
 
     // We are getting the user input as is.
-    // TODO: Ensure user input is safe to use.
+    // Todo: Ensure user input is safe to use.
     $searchterm = required_param('searchterm', PARAM_RAW);
 
     // Search query.
