@@ -51,11 +51,11 @@ $messageform = new \local_dbapis\form\message_form();
 if ($data = $messageform->get_data()) {
 
     // We are getting the user input as is.
-    // TODO: Ensure user input is safe to use.
+    // Todo: Ensure user input is safe to use.
     $message = required_param('message', PARAM_RAW);
 
     // We are just displaying the form data here.
-    // TODO: Save the data to the database.
+    // Todo: Save the data to the database.
     echo $OUTPUT->header();
 
     echo html_writer::start_tag('div', ['class' => 'border p-3 my-3']);
